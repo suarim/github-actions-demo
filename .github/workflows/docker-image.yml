@@ -13,19 +13,42 @@ jobs:
     steps:
       - name: checkout the repo
         uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: run the app
+        run: npm start
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run security audit
+        run: npm audit --audit-level=moderate
+
       - name: login in to docker
         uses: docker/login-action@v3.3.0
         with:
           username: suarim
           password: qwerty123@@
+          
+      
+
+
       - name: set up docker buildx
         uses: docker/setup-buildx-action@v3
+        
       - name: push to docker
         uses:  docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: suarim/my-node-app:latest
+          tags: suarim/my-node-app:v2
       - name: echoing
         run: echo "completed successfully"
       - name: logout
