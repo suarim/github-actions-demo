@@ -41,7 +41,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
         
       - name: push to docker
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
