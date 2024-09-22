@@ -63,7 +63,7 @@ jobs:
         run: kubectl apply -f depl.yaml
 
       - name: Wait for the pods to be ready
-        run: kubectl wait --for=condition=ready pod --all --timeout=300s
+        run: kubectl wait --for=condition=ready pod --all --timeout=1000s
 
       - name: kubectl get pods and svc
         run: |
