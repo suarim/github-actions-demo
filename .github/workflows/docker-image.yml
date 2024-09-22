@@ -62,17 +62,11 @@ jobs:
       - name: apply depl and service
         run: kubectl apply -f depl.yaml
 
-      - name: Wait for the pods to be ready
-        run: kubectl wait --for=condition=ready pod --all --timeout=1000s
+    
 
       - name: kubectl get pods and svc
         run: |
           kubectl get pods
           kubectl get svc
 
-      - name: Wait for the service to be ready
-        run: |
-          while ! minikube service my-service --url; do
-            echo "Waiting for service to be ready..."
-            sleep 10
-          done
+     
