@@ -59,3 +59,13 @@ jobs:
 
       - name: kubectl get pods
         run: kubectl get pods -A
+
+      - name: apply depl and service
+        run: kubectl apply -f depl.yaml
+
+      - name: kubectl get pods and svc
+        run: |
+            kubectl get pods
+            kubectl get svc
+      - name: minikube service
+        run: minikube service my-service --url
