@@ -47,8 +47,15 @@ jobs:
           context: .
           push: true
           tags: suarim/my-node-app:v3
+          
       - name: echoing
         run: echo "completed successfully"
+        
       - name: logout
         run: docker logout
-        
+
+      - name: start minikube
+        uses: medyagh/setup-minikube@v0.0.16
+
+      - name: kubectl get pods
+        run: kubectl get pods -A
