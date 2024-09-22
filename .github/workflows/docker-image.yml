@@ -70,6 +70,9 @@ jobs:
           kubectl get pods
           kubectl get svc
 
+      - name: currl
+        run: curl http://192.168.49.2:30001/
+        
       - name: Wait for the service to be ready
         run: |
           while ! minikube service my-service --url; do
