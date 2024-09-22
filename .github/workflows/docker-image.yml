@@ -41,7 +41,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
         
       - name: push to docker
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v4
         with:
           context: .
           push: true
@@ -62,11 +62,17 @@ jobs:
       - name: apply depl and service
         run: kubectl apply -f depl.yaml
 
-    
+      - name: Wait for the pods to be ready
+        run: kubectl wait --for=condition=ready pod --all --timeout=300s
 
       - name: kubectl get pods and svc
         run: |
           kubectl get pods
           kubectl get svc
 
-     
+      - name: Wait for the service to be ready
+        run: |
+          while ! minikube service my-service --url; do
+            echo "Waiting for service to be ready..."
+            sleep 10
+          done
