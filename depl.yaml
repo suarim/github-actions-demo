@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: my-node-app:latest
+        image: my-node-app:v4
         ports:
         - containerPort: 3000
 ---
