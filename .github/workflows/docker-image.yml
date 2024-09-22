@@ -34,12 +34,10 @@ jobs:
       - name: login in to docker
         uses: docker/login-action@v3.3.0
         with:
-          username: suarim
-          password: qwerty123@@
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
           
-      
-
-
       - name: set up docker buildx
         uses: docker/setup-buildx-action@v3
         
@@ -48,7 +46,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: suarim/my-node-app:v2
+          tags: suarim/my-node-app:v3
       - name: echoing
         run: echo "completed successfully"
       - name: logout
