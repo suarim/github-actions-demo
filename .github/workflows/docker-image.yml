@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: run the app
-        run: node index.js
+      # - name: run the app
+      #   run: node index.js
 
       - name: Run unit tests
         run: npm test
