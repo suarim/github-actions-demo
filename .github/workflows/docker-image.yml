@@ -61,7 +61,7 @@ jobs:
         run: kubectl get pods -A
 
       - name: apply depl and service
-        run: kubectl apply -f .
+        run: kubectl apply -f depl.yaml
 
       - name: kubectl get pods and svc
         run: |
