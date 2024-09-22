@@ -37,12 +37,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-          
       - name: set up docker buildx
         uses: docker/setup-buildx-action@v3
         
       - name: push to docker
-        uses:  docker/build-push-action@v4
+        uses: docker/build-push-action@v4
         with:
           context: .
           push: true
@@ -63,9 +62,11 @@ jobs:
       - name: apply depl and service
         run: kubectl apply -f depl.yaml
 
+    
+
       - name: kubectl get pods and svc
         run: |
-            kubectl get pods
-            kubectl get svc
-      - name: minikube service
-        run: minikube service my-service --url
+          kubectl get pods
+          kubectl get svc
+
+     
