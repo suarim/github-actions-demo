@@ -46,7 +46,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: suarim/my-node-app:v3
+          tags: suarim/my-node-app:v4
           
       - name: echoing
         run: echo "completed successfully"
